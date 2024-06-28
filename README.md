@@ -11,8 +11,8 @@ The project can be run
    1. docker image build -t react-app:latest . 
    2. docker images  
    3. docker run -p 3002:3000 react-app
-3. As AWS service: new image is built and deployed on "push" to the "main" branch
+3. As AWS service: new image is built and deployed using GitHub actions on "push" to the "main" branch
 
-Currently, the service is deployed as:
-https://k7b3riigaa.us-east-2.awsapprunner.com/
+Currently, the default connection of this app is to the [spring-boot-service](https://github.com/boroda123/spring-boot-service), 
+which is deployed on AWS as: https://k7b3riigaa.us-east-2.awsapprunner.com/
 
