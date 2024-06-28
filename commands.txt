@@ -5,12 +5,22 @@ git remote add origin https://github.com/boroda123/react-app.git
 git remote -v
 git remote remove origin
 
+npm install
 npm run build
 npm start
 
+# Docker commands
 docker image build -t react-app:latest .
-docker images
-
+docker images -a
 docker run -p 3002:3000 react-app
-docker ps -a
 docker stop eeeb0aa2fd4c
+
+docker rmi <image_id>
+docker rmi $(docker images -a -q) # remove all images
+
+docker ps -a
+docker stop <container_id>
+docker stop $(docker ps -q) # stop all containers
+docker rm $(docker ps -a -q) # remove all containers
+
+docker system prune -a # clean ALL - images, containers, volumes, and networks
