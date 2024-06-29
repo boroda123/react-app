@@ -24,3 +24,23 @@ docker stop $(docker ps -q) # stop all containers
 docker rm $(docker ps -a -q) # remove all containers
 
 docker system prune -a # clean ALL - images, containers, volumes, and networks
+
+# AWS Free Tier deployment commands
+
+1. Create AWS service account: from IAM Dashboard - note Account ID
+    a) Users > Create Users (or Add Users): git-hub-actions-service-account
+    b) Set Permissions > Attach policies directly:
+        i) AmazonEC2FullAccess, AmazonS3FullAccess, AWSAppRunnerFullAccess, AmazonEC2ContainerRegistryFullAccess
+    c) Set Security credentials:
+        i) Access keys: Create access key > Applications running outside AWS > Next > Create access key
+        ii) Copy Access key and Secret access key to a safe place or download .csv file NOW
+    d) Set secrets in GitHub repo: Settings > Secrets and variables > Actions > New repository secret
+        i) AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY and AWS_ACCOUNT_NUMBER
+        ii) Variables Tab > New repository variable: AWS_REGION = us-east-2
+    e) Create AWS Image repository in Elastic Container Registry (ECR)
+        i) Elastic Container Registry page > Get started > Private
+        ii) Repository name - MUST be the same as the GitHib repo name (react-app) > Create repository
+    f) Create App Runner service - one pre environment, to deploy the same image from registry:
+     automatic deploy for dev and manual for prod
+        i) AWS App Runner page > Create an App Runner service
+        ii) Container image URI > Browse - select AWS repo and tag
