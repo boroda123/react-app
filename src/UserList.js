@@ -116,7 +116,7 @@ function UserList() {
     };
 
     const SelectableTr  = styled.tr`
-        background-color: ${props => (props.selectedId === props.id
+        background-color: ${props => (props.selectedid === props.id
             ? 'silver'
             : 'white')};
     `;
@@ -135,7 +135,7 @@ function UserList() {
                 </thead>
                 <tbody>
                 {users.map((user) => (
-                    <SelectableTr selectedId={selectedUserId} id={user.userId} onClick={(e) => handleClick(e, user.userId)}>
+                    <SelectableTr selectedid={selectedUserId} id={user.userId} onClick={(e) => handleClick(e, user.userId)}>
                         <td>{user.firstName}</td>
                         <td>{user.lastName}</td>
                         <td>

@@ -4,7 +4,7 @@ import UserList from './UserList.js';
 import UserDetails from "./UserDetails";
 import React from "react";
 
-const REACT_APP_ENV = 'dev';
+const REACT_APP_ENV = 'Local';
 const REACT_APP_DEP = 'Local';
 
 function App() {
@@ -14,12 +14,12 @@ function App() {
     }
     let appDep = REACT_APP_DEP;
     if (process.env.REACT_APP_DEP) {
-        appEnv = process.env.REACT_APP_DEP;
+        appDep = process.env.REACT_APP_DEP;
     }
 
     return (
         <div className="App">
-            <h2>User List ({appEnv}, {appDep}):</h2>
+            <h2>User List (Env: {appEnv}, Deploy: {appDep})</h2>
             <UserList/>
             <br />
             <UserDetails/>

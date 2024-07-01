@@ -52,6 +52,15 @@ jobs:
     environment: production
 
     steps:
+    - name: Create and Push new Git Tag
+      env:
+        NEW_TAG: "tag-"$(date -u +%Y-%m-%d-%H%M%S)
+      run: |  
+        echo " **** TAG: $NEW_TAG"
+        #git tag $NEW_TAG
+        #git push origin $NEW_TAG
+        exit 1
+
     - name: Checkout
       uses: actions/checkout@v4
 
