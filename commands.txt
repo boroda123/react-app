@@ -10,7 +10,7 @@ npm run build
 npm start
 
 # Docker commands
-docker image build -t react-app:latest .
+docker image build --build-arg REACT_APP_ENV=Docker -t react-app:latest .
 docker images -a
 docker run -p 3002:3000 react-app
 docker stop eeeb0aa2fd4c
@@ -27,20 +27,27 @@ docker system prune -a # clean ALL - images, containers, volumes, and networks
 
 # AWS Free Tier deployment commands
 
-1. Create AWS service account: from IAM Dashboard - note Account ID
+1. First, create AWS service account: from IAM Dashboard - note Account ID
     a) Users > Create Users (or Add Users): git-hub-actions-service-account
     b) Set Permissions > Attach policies directly:
         i) AmazonEC2FullAccess, AmazonS3FullAccess, AWSAppRunnerFullAccess, AmazonEC2ContainerRegistryFullAccess
     c) Set Security credentials:
         i) Access keys: Create access key > Applications running outside AWS > Next > Create access key
         ii) Copy Access key and Secret access key to a safe place or download .csv file NOW
-    d) Set secrets in GitHub repo: Settings > Secrets and variables > Actions > New repository secret
-        i) AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY and AWS_ACCOUNT_NUMBER
-        ii) Variables Tab > New repository variable: AWS_REGION = us-east-2
-    e) Create AWS Image repository in Elastic Container Registry (ECR)
-        i) Elastic Container Registry page > Get started > Private
-        ii) Repository name - MUST be the same as the GitHib repo name (react-app) > Create repository
-    f) Create App Runner service - one pre environment, to deploy the same image from registry:
+2. Then, set secrets in GitHub repo: Settings > Secrets and variables > Actions > New repository secret
+    a) AWS_ACCESS_KEY_ID (Access key), AWS_SECRET_ACCESS_KEY (Secret access key) and AWS_ACCOUNT_NUMBER (Account ID from item 1)
+    b) Variables Tab > New repository variable: AWS_REGION = us-east-2
+3. Create AWS Image repository in Elastic Container Registry (ECR)
+    a) Elastic Container Registry page > Get started > Private
+    b) Repository name - MUST be the same as the GitHib repo name (react-app) > Create repository
+4. Create App Runner service - one pre environment, to deploy an image from registry:
      automatic deploy for dev and manual for prod
-        i) AWS App Runner page > Create an App Runner service
-        ii) Container image URI > Browse - select AWS repo and tag
+    a) AWS App Runner page > Create an App Runner service
+    b) Repository type > Container registry
+    c) Provider: Amazon ECR
+    d) Container image URI - Browse and select Image repository and tag
+    e) Deployment trigger: Automatic
+    f) ECR access role: AppRunnerECRAccessRole
+    g) Next: service name, select smallest Virtual CPU, Port used (e.g. 3000, 8080, etc.)
+    h) Review and "Create & Deploy"
+
