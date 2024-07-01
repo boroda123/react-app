@@ -27,6 +27,21 @@
 name: Deploy to Amazon ECS
 
 on:
+on:
+  workflow_dispatch:
+    inputs:
+      deploy-environment:
+        type: choice
+        description: 'Environment to deploy to'
+        options:
+          - development
+          - production
+        required: true
+        default: 'development'
+      image-tag:
+        description: 'Docker tag to deploy'
+        required: true
+        default: 'latest'
   push:
     branches: [ "main" ]
 
