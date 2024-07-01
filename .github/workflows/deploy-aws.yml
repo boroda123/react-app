@@ -27,7 +27,6 @@
 name: Deploy to Amazon ECS
 
 on:
-on:
   workflow_dispatch:
     inputs:
       deploy-environment:
