@@ -1,6 +1,9 @@
 # react-app
 Sample implementation of a React UI app, using remote REST API.
 
+The app is currently deployed at AWS as:
+https://dtxmnaidqz.us-east-2.awsapprunner.com/ 
+
 
 The project can be run
 1. Locally from an IDE or command line:
