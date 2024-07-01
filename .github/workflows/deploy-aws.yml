@@ -68,10 +68,9 @@ jobs:
     steps:
     - name: Create and Push new Git Tag
       env:
-        PREFIX: "tag-"
-        NEW_TAG: $PREFIX$(date -u +%Y-%m-%d-%H%M%S)
+        NEW_TAG: tag
       run: |  
-        echo " **** TAG: $NEW_TAG"
+        echo " **** TAG: $NEW_TAG/$(date -u +%Y-%m-%d-%H%M%S)"
         #git tag $NEW_TAG
         #git push origin $NEW_TAG
         exit 1
