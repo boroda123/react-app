@@ -73,14 +73,15 @@ jobs:
         ECR_REPOSITORY: ${{ env.REPOSITORY }}
         IMAGE_SHA: ${{ github.sha }}
         IMAGE_TAG: latest
+        DEP_NAME: ${{ vars.REACT_APP_ENV }}
         #IMAGE_TAG: ${{ github.sha }}
         #IMAGE_TAG: $(date -u +%Y-%m-%d-%H%M%S)
       run: |
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        echo "START image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        echo "START image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG, DEP_NAME: $DEP_NAME" >> $GITHUB_OUTPUT
+        docker build --build-arg REACT_APP_ENV=$DEP_NAME -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "END image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
