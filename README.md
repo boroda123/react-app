@@ -1,9 +1,14 @@
 # react-app
 Sample implementation of a React UI app, using remote REST API.
 
+Screenshot of the react-app:
+![Screenshot of the react-app](./public/app_screenshot.png "react-app screenshot")
+
 The app is currently deployed at AWS as:
 https://dtxmnaidqz.us-east-2.awsapprunner.com/ 
 
+Note: the react-app App Runner service may be stopped on occasion to save operational costs. 
+Please contact me directly for the demo.
 
 The project can be run
 1. Locally from an IDE or command line:
