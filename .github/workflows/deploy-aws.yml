@@ -69,16 +69,16 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Create and Push new Git Tag
-      env:
-        TAG_PREFIX: tag
-      run: |
-        NEW_TAG=$(eval TAG_PREFIX-$(date +%Y-%m-%d-%H:%M:%S))
-        echo " **** TAG: $NEW_TAG"
-        git tag $NEW_TAG
-        git push origin $NEW_TAG
-        exit 1
-
+#    - name: Create and Push new Git Tag
+#      env:
+#        TAG_PREFIX: tag
+#      run: |
+#        NEW_TAG=$(eval TAG_PREFIX-$(date +%Y-%m-%d-%H:%M:%S))
+#        echo " **** TAG: $NEW_TAG"
+#        git tag $NEW_TAG
+#        git push origin $NEW_TAG
+#        exit 1
+#
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
