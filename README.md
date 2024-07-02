@@ -23,5 +23,5 @@ The project can be run
 3. As AWS service: new image is built and deployed using GitHub actions on "push" to the "main" branch
 
 Currently, the default connection of this app is to the [spring-boot-service](https://github.com/boroda123/spring-boot-service), 
-which is deployed on AWS as: https://k7b3riigaa.us-east-2.awsapprunner.com/
+which is also deployed at AWS as: https://k7b3riigaa.us-east-2.awsapprunner.com/
 
