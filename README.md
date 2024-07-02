@@ -2,6 +2,7 @@
 Sample implementation of a React UI app, using remote REST API.
 
 Screenshot of the react-app:
+
 ![Screenshot of the react-app](./public/app_screenshot.png "react-app screenshot")
 
 The app is currently deployed at AWS as:
