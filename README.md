@@ -20,7 +20,7 @@ The project can be run
 The app is currently deployed at AWS as:
 https://dtxmnaidqz.us-east-2.awsapprunner.com/
 
-**Note**: the react-app App Runner service may be stopped on occasion to save operational costs.
+**Note**: the react-app AWS App Runner service may be stopped on occasion to save operational costs.
 Please contact me directly for the local, Docker, or in-cloud demo.
 
 
